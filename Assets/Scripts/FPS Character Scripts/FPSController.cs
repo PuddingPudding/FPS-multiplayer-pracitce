@@ -9,6 +9,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float m_fRunSpeed = 10;
     [SerializeField] private float m_fCrouchSpeed = 4;
     [SerializeField] private float m_fJumpSpeed = 8;
+    [SerializeField] private float m_fGravity = 20;
 
     private float m_fSpeed;
     private bool m_bIsMoving, m_bIsGrounded, m_bIsCruouching;
@@ -57,11 +58,11 @@ public class FPSController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            this.m_fInputXSet = 1;
+            this.m_fInputXSet = -1;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            this.m_fInputXSet = -1;
+            this.m_fInputXSet = 1;
         }
         else
         {
@@ -69,6 +70,30 @@ public class FPSController : MonoBehaviour
         }
 
         this.m_fInputY = Mathf.Lerp(this.m_fInputY, this.m_fInputYSet, Time.deltaTime * 19);
-        this.m_finputX = Mathf.Lerp(this.m_fInputX, this.m_fInputXSet, Time.deltaTime * 19);
+        this.m_fInputX = Mathf.Lerp(this.m_fInputX, this.m_fInputXSet, Time.deltaTime * 19);
+        if(this.m_fInputXSet != 0 && this.m_fInputYSet != 0 && this.m_bLimitDiagonalSpeed)
+        {
+            this.m_fInputModifyFactor = Mathf.Lerp(this.m_fInputModifyFactor, 0.75f, Time.deltaTime * 19);
+        }
+        else
+        {
+            this.m_fInputModifyFactor = Mathf.Lerp(this.m_fInputModifyFactor, 1, Time.deltaTime * 19);
+        }
+
+        this.m_firstPersonViewRotation = Vector3.Lerp(this.m_firstPersonViewRotation, Vector3.zero, Time.deltaTime * 5);
+        this.m_firstPersonView.localEulerAngles = this.m_firstPersonViewRotation;
+        //上面這兩行我他媽有點看不懂
+
+        if(this.m_bIsGrounded)
+        {
+            this.m_moveDir = new Vector3(this.m_fInputX * this.m_fInputModifyFactor, -this.m_fAnitiBumpFactor
+                , this.m_fInputY * this.m_fInputModifyFactor);
+            this.m_moveDir = transform.TransformDirection(this.m_moveDir) * this.m_fSpeed;
+        }
+        this.m_moveDir.y -= this.m_fGravity * Time.deltaTime;
+        this.m_bIsGrounded = (this.m_charController.Move(this.m_moveDir * Time.deltaTime) & CollisionFlags.Below) != 0;
+        //檢測底下有沒有碰撞
+
+        this.m_bIsMoving = this.m_charController.velocity.magnitude > 0.15f;
     }
 }
