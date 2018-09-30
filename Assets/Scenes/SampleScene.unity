@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 143821602}
   - component: {fileID: 143821601}
   - component: {fileID: 143821600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 308096116}
   - component: {fileID: 308096115}
   - component: {fileID: 308096114}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,23 +348,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 308096112}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &639000648 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1208698154292536, guid: 660279e1810962742b18e54a22dec27a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017085978}
---- !u!114 &639000649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 639000648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d3665684aca3e4a96052e1567cf9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_axes: 1
 --- !u!1 &1960019107
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +356,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1960019108}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,39 +421,11 @@ Prefab:
       propertyPath: m_Name
       value: FPS Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114961962357735950, guid: 660279e1810962742b18e54a22dec27a,
+        type: 2}
+      propertyPath: m_groundLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 660279e1810962742b18e54a22dec27a, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2017085979 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1650642714905576, guid: 660279e1810962742b18e54a22dec27a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017085978}
---- !u!114 &2017085980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2017085979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b56343360edacb148b7aad2624d07ec9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_fWalkSpeed: 6.75
-  m_fRunSpeed: 10
-  m_fCrouchSpeed: 4
-  m_fJumpSpeed: 8
-  m_fGravity: 20
---- !u!114 &2017085981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2017085979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d3665684aca3e4a96052e1567cf9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_axes: 0

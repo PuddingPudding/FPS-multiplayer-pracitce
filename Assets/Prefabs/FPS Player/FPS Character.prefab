@@ -199,6 +199,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4869205845176068}
+  - component: {fileID: 114338393504789028}
   m_Layer: 0
   m_Name: FPS View
   m_TagString: Untagged
@@ -669,6 +670,8 @@ GameObject:
   - component: {fileID: 4215941435476344}
   - component: {fileID: 95463169670393992}
   - component: {fileID: 143165876395421640}
+  - component: {fileID: 114961962357735950}
+  - component: {fileID: 114274850473249064}
   m_Layer: 0
   m_Name: FPS Character
   m_TagString: Untagged
@@ -1932,6 +1935,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114274850473249064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650642714905576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d3665684aca3e4a96052e1567cf9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_axes: 0
+--- !u!114 &114338393504789028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1208698154292536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d3665684aca3e4a96052e1567cf9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_axes: 1
+--- !u!114 &114961962357735950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650642714905576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56343360edacb148b7aad2624d07ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fWalkSpeed: 6.75
+  m_fRunSpeed: 10
+  m_fCrouchSpeed: 4
+  m_fJumpSpeed: 8
+  m_fGravity: 20
 --- !u!137 &137918929741085156
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

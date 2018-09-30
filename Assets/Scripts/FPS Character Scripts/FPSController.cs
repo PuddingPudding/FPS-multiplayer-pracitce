@@ -10,6 +10,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float m_fCrouchSpeed = 4;
     [SerializeField] private float m_fJumpSpeed = 8;
     [SerializeField] private float m_fGravity = 20;
+    [SerializeField] private LayerMask m_groundLayer;
 
     private float m_fSpeed;
     private bool m_bIsMoving, m_bIsGrounded, m_bIsCruouching;
@@ -25,6 +26,11 @@ public class FPSController : MonoBehaviour
     private CharacterController m_charController;
     private Vector3 m_moveDir = Vector3.zero;
 
+    private float m_fRayDis;
+    private float m_fDefaultControllerHeight;
+    private Vector3 m_defaulCamPos;
+    private float m_fCamHeight;
+
     // Use this for initialization
     void Awake()
     {
@@ -33,6 +39,10 @@ public class FPSController : MonoBehaviour
         this.m_charController = this.GetComponent<CharacterController>();
         this.m_fSpeed = this.m_fWalkSpeed;
         this.m_bIsMoving = false;
+
+        this.m_fRayDis = this.m_charController.height * 0.5f + this.m_charController.radius;
+        this.m_fDefaultControllerHeight = this.m_charController.height;
+        this.m_defaulCamPos = this.m_firstPersonView.localPosition;
     }
 
     // Update is called once per frame
@@ -81,10 +91,14 @@ public class FPSController : MonoBehaviour
         }
 
         this.m_firstPersonViewRotation = Vector3.Lerp(this.m_firstPersonViewRotation, Vector3.zero, Time.deltaTime * 5);
+        //if(this.m_firstPersonViewRotation.magnitude > 0)
+        //{
+        //    print("FPSView之旋轉角度為 " + this.m_firstPersonViewRotation);
+        //} //2018/9/30經實測以後發現上下這兩行其實沒啥用(也許只是暫時)
         this.m_firstPersonView.localEulerAngles = this.m_firstPersonViewRotation;
         //上面這兩行我他媽有點看不懂
 
-        if(this.m_bIsGrounded)
+        if (this.m_bIsGrounded)
         {
             this.m_moveDir = new Vector3(this.m_fInputX * this.m_fInputModifyFactor, -this.m_fAnitiBumpFactor
                 , this.m_fInputY * this.m_fInputModifyFactor);
