@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(FPSPlayerAnim))]
 public class FPSController : MonoBehaviour
 {
     [SerializeField] private float m_fWalkSpeed = 6.75f;
@@ -31,6 +32,8 @@ public class FPSController : MonoBehaviour
     private Vector3 m_defaulCamPos;
     private float m_fCamHeight;
 
+    private FPSPlayerAnim m_playerAnim;
+
     // Use this for initialization
     void Awake()
     {
@@ -44,6 +47,7 @@ public class FPSController : MonoBehaviour
         print("射線距離 " + this.m_fRayDis);
         this.m_fDefaultControllerHeight = this.m_charController.height;
         this.m_defaulCamPos = this.m_firstPersonView.localPosition;
+        this.m_playerAnim = this.GetComponent<FPSPlayerAnim>();
     }
 
     // Update is called once per frame
@@ -112,6 +116,8 @@ public class FPSController : MonoBehaviour
         //檢測底下有沒有碰撞
 
         this.m_bIsMoving = this.m_charController.velocity.magnitude > 0.15f;
+
+        this.HandleAnimations();
     }
 
     void PlayerCrouchingAndSprinting()
@@ -121,12 +127,14 @@ public class FPSController : MonoBehaviour
             if (!this.m_bIsCrouching)
             {
                 this.m_bIsCrouching = true;
+                this.m_playerAnim.PlayerCrouch(this.m_bIsCrouching);
             }
             else
             {
                 if (this.CanGetUp())
                 {
                     this.m_bIsCrouching = false;
+                    this.m_playerAnim.PlayerCrouch(this.m_bIsCrouching);
                 }
             }
             StopCoroutine(MoveCamCrouch());
@@ -206,6 +214,7 @@ public class FPSController : MonoBehaviour
                 if (this.CanGetUp())
                 {
                     this.m_bIsCrouching = false;
+                    this.m_playerAnim.PlayerCrouch(this.m_bIsCrouching);
                     StopCoroutine(MoveCamCrouch());
                     StartCoroutine(MoveCamCrouch());
                 }
@@ -215,5 +224,17 @@ public class FPSController : MonoBehaviour
                 this.m_moveDir.y = this.m_fJumpSpeed;
             }
         }
+    }
+    void HandleAnimations()
+    {
+        this.m_playerAnim.Movement(this.m_charController.velocity.magnitude);
+        this.m_playerAnim.PlayerJump(this.m_charController.velocity.y);
+
+        if (this.m_bIsCrouching && this.m_charController.velocity.magnitude > 0)
+        {
+            this.m_playerAnim.PlayerCrouchWalk(this.m_charController.velocity.magnitude);
+        }
+        //this.m_playerAnim.PlayerCrouch(this.m_bIsCrouching); //原本想說每一禎呼叫，後來改掉
+        //this.m_playerAnim.PlayerCrouchWalk(this.m_charController.velocity.magnitude);
     }
 }
