@@ -12,6 +12,11 @@ public class FPSController : MonoBehaviour
     [SerializeField] private float m_fJumpSpeed = 8;
     [SerializeField] private float m_fGravity = 20;
     [SerializeField] private LayerMask m_groundLayer;
+    [SerializeField] private WeaponManager m_weaponManager;
+
+    private FPSWeapon m_currentWeapon;
+    private float m_fFireRate = 15f;
+    private float m_fNextTimeToFire = 0f;
 
     private float m_fSpeed;
     private bool m_bIsMoving, m_bIsGrounded, m_bIsCrouching;
@@ -48,6 +53,9 @@ public class FPSController : MonoBehaviour
         this.m_fDefaultControllerHeight = this.m_charController.height;
         this.m_defaulCamPos = this.m_firstPersonView.localPosition;
         this.m_playerAnim = this.GetComponent<FPSPlayerAnim>();
+
+        this.m_weaponManager.Weapons[0].SetActive(true);
+        this.m_currentWeapon = this.m_weaponManager.Weapons[0].GetComponent<FPSWeapon>();
     }
 
     // Update is called once per frame
@@ -236,5 +244,24 @@ public class FPSController : MonoBehaviour
         }
         //this.m_playerAnim.PlayerCrouch(this.m_bIsCrouching); //原本想說每一禎呼叫，後來改掉
         //this.m_playerAnim.PlayerCrouchWalk(this.m_charController.velocity.magnitude);
+
+        if(Input.GetMouseButtonDown(0) && Time.time > this.m_fNextTimeToFire)
+        {
+            this.m_fNextTimeToFire = Time.time + 1f / this.m_fFireRate;
+            if(!this.m_bIsCrouching) //如果不是蹲著(也就是站著或跳躍)
+            {
+                this.m_playerAnim.Shoot(true);
+            }
+            else
+            {
+                this.m_playerAnim.Shoot(false);
+            }
+            this.m_currentWeapon.Shoot();
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            this.m_playerAnim.ReloadGun();
+        }
     }
 }

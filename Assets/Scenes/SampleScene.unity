@@ -113,42 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &26308471 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1045475250753660, guid: 660279e1810962742b18e54a22dec27a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017085978}
---- !u!114 &26308472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 26308471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36351adde23e3dd4c8809260eb9cc588, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_listWeapons:
-  - {fileID: 978474280}
-  - {fileID: 764177562}
-  - {fileID: 72754773}
---- !u!1 &72754773 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1542535483456174, guid: 660279e1810962742b18e54a22dec27a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017085978}
---- !u!114 &72754774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 72754773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33aeb066dac5d7479dbf31d2efe3314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &143821599
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,38 +348,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 308096112}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &764177562 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1672969113084948, guid: 660279e1810962742b18e54a22dec27a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017085978}
---- !u!114 &764177563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 764177562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33aeb066dac5d7479dbf31d2efe3314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &978474280 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1719992736967986, guid: 660279e1810962742b18e54a22dec27a,
-    type: 2}
-  m_PrefabInternal: {fileID: 2017085978}
---- !u!114 &978474281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 978474280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33aeb066dac5d7479dbf31d2efe3314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1960019107
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,10 +420,6 @@ Prefab:
     - target: {fileID: 1650642714905576, guid: 660279e1810962742b18e54a22dec27a, type: 2}
       propertyPath: m_Name
       value: FPS Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1719992736967986, guid: 660279e1810962742b18e54a22dec27a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 660279e1810962742b18e54a22dec27a, type: 2}

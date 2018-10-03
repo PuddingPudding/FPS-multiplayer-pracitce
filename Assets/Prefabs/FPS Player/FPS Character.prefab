@@ -49,10 +49,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4433230141779758}
+  - component: {fileID: 114414068364017304}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -248,7 +249,7 @@ GameObject:
   m_Layer: 0
   m_Name: FPS View
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -761,6 +762,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4433869396998272}
+  - component: {fileID: 114104557440419920}
   m_Layer: 0
   m_Name: m4a1
   m_TagString: Untagged
@@ -934,6 +936,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4912043095410514}
+  - component: {fileID: 114691342750867984}
   m_Layer: 0
   m_Name: ak47
   m_TagString: Untagged
@@ -1009,6 +1012,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4627742413951898}
+  - component: {fileID: 114679352324084868}
   m_Layer: 0
   m_Name: deagle
   m_TagString: Untagged
@@ -2796,6 +2800,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114104557440419920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542535483456174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33aeb066dac5d7479dbf31d2efe3314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114274850473249064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2820,6 +2835,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_axes: 1
+--- !u!114 &114414068364017304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1045475250753660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36351adde23e3dd4c8809260eb9cc588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listWeapons:
+  - {fileID: 1719992736967986}
+  - {fileID: 1672969113084948}
+  - {fileID: 1542535483456174}
+--- !u!114 &114679352324084868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719992736967986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33aeb066dac5d7479dbf31d2efe3314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114691342750867984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1672969113084948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33aeb066dac5d7479dbf31d2efe3314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114954131593921012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2850,6 +2902,7 @@ MonoBehaviour:
   m_groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  m_weaponManager: {fileID: 114414068364017304}
 --- !u!137 &137455206183786490
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
