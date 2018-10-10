@@ -78,8 +78,9 @@ public class FPSMouse : MonoBehaviour
             this.m_fRotationY += Input.GetAxis("Mouse Y") * this.m_fSensivityY;
 
             this.m_fRotationY = this.ClampAngle(this.m_fRotationY, this.m_fMinY, this.m_fMaxY);
+            //先把旋轉度數設定為合理範圍之度數
             Quaternion yQuat = Quaternion.AngleAxis(-this.m_fRotationY, Vector3.right);
-            //繞著up，也就是人物頭頂的軸線去旋轉
+            //繞著right，也就是人物向右的軸線去旋轉
             this.transform.localRotation = this.m_originRotation * yQuat;
         }
     }
