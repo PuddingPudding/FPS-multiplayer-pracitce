@@ -2827,6 +2827,7 @@ GameObject:
   - component: {fileID: 114954131593921012}
   - component: {fileID: 114695084718028506}
   - component: {fileID: 114431572807120636}
+  - component: {fileID: 114979030084801314}
   m_Layer: 0
   m_Name: FPS Character
   m_TagString: Untagged
@@ -5097,7 +5098,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650642714905576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8876524, y: 1.1, z: -0.47023106}
+  m_LocalPosition: {x: 222.37726, y: 158.58104, z: -2791.7876}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4438069790437764}
@@ -7812,7 +7813,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1613263584515300}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9176,6 +9177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_concreteImpact: {fileID: 100002, guid: 2b4ffdf4a64f87d4ca3c0de925e6d343, type: 2}
+  m_mainCam: {fileID: 20402371569706312}
 --- !u!114 &114512096651611014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9256,6 +9258,38 @@ MonoBehaviour:
     m_Bits: 512
   m_weaponManager: {fileID: 114414068364017304}
   m_handsWeaponManager: {fileID: 114321828646681600}
+--- !u!114 &114979030084801314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650642714905576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 102
+    i1: 2
+    i2: 121
+    i3: 225
+    i4: 129
+    i5: 9
+    i6: 98
+    i7: 116
+    i8: 43
+    i9: 24
+    i10: 229
+    i11: 74
+    i12: 34
+    i13: 222
+    i14: 194
+    i15: 122
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!137 &137165780604637432
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
