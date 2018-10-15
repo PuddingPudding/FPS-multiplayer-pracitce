@@ -15,7 +15,7 @@ public class FPSHandsWeapon : MonoBehaviour
     private string SHOOT = "Shoot";
     private string RELOAD = "Reload";
 
-    void Awake()
+    void Start()
     {
         this.m_muzzleFlash = this.transform.Find("Muzzle Flash").gameObject;
         this.m_muzzleFlash.SetActive(false);

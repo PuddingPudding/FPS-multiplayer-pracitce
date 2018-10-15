@@ -19,7 +19,7 @@ public class FPSPlayerAnim : MonoBehaviour
     private readonly string CROUCH_SHOOT = "CrouchShoot";
     private readonly string RELOAD = "Reload";
 
-    void Awake()
+    void Start()
     {
         this.m_anim = this.GetComponent<Animator>();
     }

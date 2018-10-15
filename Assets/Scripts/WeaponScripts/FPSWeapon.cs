@@ -6,7 +6,7 @@ public class FPSWeapon : MonoBehaviour
 {
     private GameObject m_muzzleFlash;
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         this.m_muzzleFlash = this.transform.Find("Muzzle Flash").gameObject;
         //transform.Find會沿著自己在Hierarchy底下的子物件找

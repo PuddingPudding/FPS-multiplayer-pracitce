@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(FPSPlayerAnim))]
-public class FPSController : MonoBehaviour
+public class FPSController : NetworkBehaviour
 {
     [SerializeField] private float m_fWalkSpeed = 6.75f;
     [SerializeField] private float m_fRunSpeed = 10;
@@ -14,6 +15,10 @@ public class FPSController : MonoBehaviour
     [SerializeField] private LayerMask m_groundLayer;
     [SerializeField] private WeaponManager m_weaponManager;
     [SerializeField] private WeaponManager m_handsWeaponManager;
+    [SerializeField] private GameObject m_playerHolder, m_weaponsHolder;
+    [SerializeField] private GameObject[] m_arrWeaponsFPS;
+    [SerializeField] private FPSMouse[] m_arrMouseLook;
+    [SerializeField] private Camera m_mainCam;
 
     private FPSWeapon m_currentWeapon;
     private FPSHandsWeapon m_curHandsWeapon;
@@ -42,7 +47,7 @@ public class FPSController : MonoBehaviour
     private FPSPlayerAnim m_playerAnim;
 
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         this.m_firstPersonView = this.transform.Find("FPS View").transform;
         //transform.Find會從自己的遊戲物件子列表中去尋找對應的物件，這個方法會比GameObject.find還要快
@@ -61,13 +66,58 @@ public class FPSController : MonoBehaviour
 
         this.m_handsWeaponManager.Weapons[0].SetActive(true);
         this.m_curHandsWeapon = this.m_handsWeaponManager.Weapons[0].GetComponent<FPSHandsWeapon>();
+
+        if(this.isLocalPlayer)
+        {
+            this.m_playerHolder.layer = LayerMask.NameToLayer("Player");
+            foreach(Transform child in m_playerHolder.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Player");
+            }
+            for(int i = 0; i<m_arrWeaponsFPS.Length; i++)
+            {
+                m_arrWeaponsFPS[i].layer = LayerMask.NameToLayer("Player");
+            }
+            m_weaponsHolder.layer = LayerMask.NameToLayer("Enemy");
+            foreach(Transform child in m_weaponsHolder.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Enemy");
+            }
+        }
+        //if (!this.isLocalPlayer)
+        else
+        {
+            this.m_playerHolder.layer = LayerMask.NameToLayer("Enemy");
+            foreach (Transform child in m_playerHolder.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Enemy");
+            }
+            for (int i = 0; i < m_arrWeaponsFPS.Length; i++)
+            {
+                m_arrWeaponsFPS[i].layer = LayerMask.NameToLayer("Enemy");
+            }
+            m_weaponsHolder.layer = LayerMask.NameToLayer("Player");
+            foreach (Transform child in m_weaponsHolder.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Player");
+            }
+            for(int i = 0; i < m_arrMouseLook.Length; i++)
+            {
+                m_arrMouseLook[i].enabled = false;
+            }
+            this.m_mainCam.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.PlayerMovement();
-        this.SelectWeapon();
+        //如果我們不是該玩家
+        if(this.isLocalPlayer)
+        {
+            this.PlayerMovement();
+            this.SelectWeapon();
+        }        
     }
 
     private void PlayerMovement()
