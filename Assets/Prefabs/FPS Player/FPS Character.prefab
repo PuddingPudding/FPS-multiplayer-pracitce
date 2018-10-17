@@ -2842,11 +2842,13 @@ GameObject:
   - component: {fileID: 114954131593921012}
   - component: {fileID: 114695084718028506}
   - component: {fileID: 114431572807120636}
+  - component: {fileID: 114884759457824630}
   - component: {fileID: 114979030084801314}
   - component: {fileID: 114270868699092314}
+  - component: {fileID: 114968368590107516}
   m_Layer: 0
   m_Name: FPS Character
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9257,6 +9259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_concreteImpact: {fileID: 100002, guid: 2b4ffdf4a64f87d4ca3c0de925e6d343, type: 2}
+  m_bloodImpact: {fileID: 100006, guid: cb771650f86a58a46ab01616eef4650c, type: 2}
+  m_fDmgAmount: 5
   m_mainCam: {fileID: 20402371569706312}
 --- !u!114 &114512096651611014
 MonoBehaviour:
@@ -9304,6 +9308,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96df195bd72ff974db1e0aa517aea4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114884759457824630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650642714905576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78147f28618dd5141966980a8d61fc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fHP: 20
 --- !u!114 &114954131593921012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9351,6 +9367,25 @@ MonoBehaviour:
   - {fileID: 114274850473249064}
   - {fileID: 114338393504789028}
   m_mainCam: {fileID: 20402371569706312}
+--- !u!114 &114968368590107516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650642714905576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95463169670393992}
+  m_ParameterSendBits: 127
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114979030084801314
 MonoBehaviour:
   m_ObjectHideFlags: 1

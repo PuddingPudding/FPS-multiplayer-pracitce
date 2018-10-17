@@ -109,6 +109,11 @@ public class FPSController : NetworkBehaviour
         }
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        this.tag = "Player";
+    }
+
     // Update is called once per frame
     void Update()
     {

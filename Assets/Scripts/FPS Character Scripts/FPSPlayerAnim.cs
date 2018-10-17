@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(Animator))]
-public class FPSPlayerAnim : MonoBehaviour
+public class FPSPlayerAnim : NetworkBehaviour
 {
     [SerializeField] RuntimeAnimatorController m_pistolAnim, m_machineGunAnim;
     //AnimatorController宣告成runtime版本的話似乎就能在執行時去做替換動作
 
     private Animator m_anim;
+    private NetworkAnimator m_networkAnim; //Trigger類動畫參數似乎無法透過直接勾選達到同步效果
 
     private readonly string MOVE = "Move";
     private readonly string VELOCITY_Y = "VelocityY";
@@ -22,6 +24,7 @@ public class FPSPlayerAnim : MonoBehaviour
     void Start()
     {
         this.m_anim = this.GetComponent<Animator>();
+        this.m_networkAnim = this.GetComponent<NetworkAnimator>();
     }
 
     public void Movement(float _fMagnitude)
@@ -49,16 +52,19 @@ public class FPSPlayerAnim : MonoBehaviour
         if(_bIsStanding)
         {
             this.m_anim.SetTrigger(this.STAND_SHOOT);
+            this.m_networkAnim.SetTrigger(this.STAND_SHOOT);
         }
         else
         {
             this.m_anim.SetTrigger(this.CROUCH_SHOOT);
+            this.m_networkAnim.SetTrigger(this.CROUCH_SHOOT);
         }
     }
 
     public void ReloadGun()
     {
         this.m_anim.SetTrigger(this.RELOAD);
+        this.m_networkAnim.SetTrigger(this.RELOAD);
     }
 
     public void ChangeController(bool _bIsPistol)
